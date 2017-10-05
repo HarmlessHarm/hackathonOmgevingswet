@@ -1,0 +1,36 @@
+{% macro NavBar() -%}
+
+
+<header>
+	<a href="/"><img id="logo" src="../static/images/gemeenteLogo.svg"></a>
+	<h2>Digitaal stelsel omgevingswet (DSO)</h2>
+</header>
+
+
+{%- endmacro %}
+
+{% macro Draagvlakkie() -%}
+
+
+<header>
+	<a href="/"><img id="logo" src="../static/images/gemeenteLogo.svg"></a>
+	<h2>Draagvlakkie</h2>
+</header>
+
+
+{%- endmacro %}
+
+
+{% macro head() -%}
+
+<link rel="icon" href="https://www.amsterdam.nl/favicon.ico" type="image/x-icon">
+<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href={{ url_for('static', filename='css/styles.css') }}>
+<script
+  src="https://code.jquery.com/jquery-3.2.1.js"
+  integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+  crossorigin="anonymous"></script>
+<script type="text/javascript" src="../static/js/scripts.js"></script>
+
+
+{%- endmacro %}

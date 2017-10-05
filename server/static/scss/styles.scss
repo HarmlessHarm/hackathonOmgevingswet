@@ -1,0 +1,356 @@
+
+
+html, body {
+	font-family: 'Roboto', sans-serif;
+	margin: 0;
+	padding: 0;
+}
+
+
+$headerHeight: 50px;
+$headerHeightTotal: 90px;
+$red: #EC0000;
+
+
+
+header {
+	position: fixed;
+	left: 0;
+	right: 0;
+	top: 0;
+	background: white;
+	box-shadow: 0 0 5px -1px grey;
+	padding: 20px 0;
+	height: $headerHeight;
+	line-height: $headerHeight;
+	h2 {
+		margin: 0;
+		text-align: center;
+		color: $red;
+	}
+	#logo {
+		height: $headerHeight;
+		position: absolute;
+		left: 20px;
+	}
+
+}
+
+
+.content-wrapper {
+	position: relative;
+	margin-top: $headerHeightTotal;
+	height: calc(100vh - #{$headerHeightTotal});
+}
+
+#base .content-wrapper {
+	margin-top: 0;
+	height: 100vh;
+
+	.intro-text {
+		display: block;
+		position: relative;
+		margin: 50px auto 30px;
+		box-shadow: 0 0 7px -1px gray;
+		padding: 20px;
+		max-width: 1020px;
+	}
+	#start-btn {
+		display: block;
+		position: relative;
+		height: 50px;
+		left: 50%;
+		background: green;
+		line-height: 50px;
+		width: 100px;
+		text-align: center;
+		top: 0;
+		transform: translateX(-50%);
+		cursor: pointer;
+		color: white;
+		font-weight: bold;
+	}
+}
+a {
+	text-decoration: none;
+}
+
+.header-wrapper {
+	min-height: 350px;
+	height: 33%;
+	.header-image {
+		height: 100%;
+		background-image: url('../images/amsterdam.jpg');
+		background-position-y: -170px;
+		filter: blur(2px) grayscale(50%);
+	}
+	.title {
+		position: absolute;
+		top: 170px;
+		font-size: 40px;
+		font-weight: bold;
+		color: white;
+		width: 100%;
+		display: block;
+		text-align: center;
+	}
+}
+
+
+.map-container {
+	position: relative;
+	height: 700px;
+	width: 1070px;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	.map-wrapper {
+		position: absolute;
+		height: 700px;
+		width: 700px;
+		left: 0;
+		background-size: cover;
+		opacity: 1;
+		transition: opacity 0.7s linear, 
+					background-size 0.7s linear,
+					background-position 0.7s linear;
+
+		&#map {
+			background-image: url('../images/map.png');
+		}
+		&#satelite {
+			background-image: url('../images/satelite.png');
+			&.zoomed {
+				background-size: 300%;
+				background-position: -600px -300px;
+			}
+		}
+		&.hidden {
+			opacity: 0;
+		}
+	}
+
+	#satelite-swap {
+		position: absolute;
+		height: 50px;
+		width: 50px;
+		bottom: -21px;
+		left: 30px;
+		transform: translate(-50%, -50%);
+	}
+
+
+	#possibilities-wrapper {
+		height: 700px;
+		width: 350px;
+		position: absolute;
+		right: 0;
+
+		box-shadow: -1px 2px 5px -1px grey;
+		background-color: white;
+
+		.header {
+			padding: 10px 20px;
+			border-bottom: 1px gray solid;
+			font-style: italic;
+		}
+		.option {
+			text-indent: 10px;
+			position: relative;
+			// padding: 0 20px;
+			height: 40px;
+			line-height: 40px;
+			cursor: pointer;
+			border-bottom: 1px lightgray solid;
+			.title {
+				margin-left: 20px;
+			}
+			.restriction-container {
+				background: white;
+				position: relative;
+				width: 100%;
+				z-index: 1;
+				.restriction {
+					width: 100%;
+					display: block;
+					text-indent: 25px;
+				}
+			}
+			&::after {
+				content: "";
+				width: 10px;
+				height: 10px;
+				right: 14px;
+				top: 17px;
+				transform: rotate(-135deg);
+				position: absolute;
+				border-right: 1px solid black;
+				border-bottom: 1px solid black;
+				transition: rotate 1s linear;
+			}
+			&.collapsed {
+				.restriction-container {
+					display: none;
+				}
+				&::after {
+					transform: rotate(45deg);
+					transition: rotate 1s linear;
+				}
+			}
+
+			// text-align: center;
+			.title {
+			}
+		}
+		.divider {
+			height: 10px;
+		}
+		.checkbox {
+			height: 40px;
+			line-height: 40px;
+			text-indent: 20px;
+		}
+		#submit-request, #start-request {
+			display: block;
+			height: 40px;
+			width: 50%;
+			margin: auto;
+			line-height: 40px;
+			text-align: center;
+			color: white;
+			background: green;
+		}
+		#start-request {
+			width: 75%;
+			background-color: orange;
+			margin-top: 10px;
+		}
+	}
+}
+
+#backyard-plan {
+	background-image: url('../images/backyard-plan.png')
+}
+
+#progress {
+	position: relative;
+	width: 250px;
+	background-color: grey;
+	margin: 10px auto;
+	#bar {
+		width: 0;
+		height: 30px;
+		background-color: green;
+	}
+	.bartext {
+		position: absolute;
+	    top: 0;
+	    width: 100%;
+	    height: 30px;
+	    line-height: 30px;
+	    text-align: center;
+	    color: white;
+	}
+}
+
+
+.draagvlakkie {
+	// &::after {
+	// 	content: "";
+	// 	height: 1px;
+	// }
+	.draagvlakkie-intro {
+		max-width: 1020px;
+		margin: auto;
+		padding-top: 40px;
+	}
+	.voorstel-container {
+		max-width: 1020px;
+		margin: auto;
+		#left-side {
+			width: 50%;
+			float: left;
+			// background-color: lightblue;
+			.voorstel {
+				img {
+					max-width: 40%;
+					float: left
+				}
+				.top {
+					width: 55%;
+					float: right;
+
+				}
+				#description {
+					clear: both;
+					padding: 20px;
+				}
+			}
+		}
+		#right-side {
+			width: 50%;
+			float: right;
+			// background-color: lightgray;
+			.voter {
+				position: relative;
+				height: 50px;
+				width: 65%;
+				// margin: auto;
+				margin: 10px auto;
+				img {
+					max-height: 70%;
+					top: 15%;
+					position: relative;
+					left: 20px;
+					padding-right: 20px;
+					border-right: 5px black solid;
+				}
+				.counter {
+					background-color: white;
+					margin: 4px;
+					height: 42px;
+					line-height: 42px;
+					width: 42px;
+					float: left;
+					text-align: center;
+					font-size: 25px;
+				}
+				.vote {
+				    position: absolute;
+				    top: 0;
+				    line-height: 50px;
+				    text-indent: 190px;
+				    font-weight: bold;
+				}
+			}
+			#positive {
+				background-color: green;
+			}
+			#negative {
+				background-color: red;
+			}
+			.progress {
+				position: relative;
+				width: 65%;
+				margin: auto;
+				background-color: grey;
+				.bar {
+					width: 0;
+					height: 50px;
+					background-color: green;
+				}
+				.bartext {
+					position: absolute;
+				    top: 0;
+				    line-height: 50px;
+				    text-align: center;
+				    width: 100%;
+				}
+			}
+		}
+	}
+}
+
+.share {
+	margin-left: 90px;
+}

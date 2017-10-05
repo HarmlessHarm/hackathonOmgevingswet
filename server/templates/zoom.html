@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- Import macros for flask -->
+	{% import 'macros.html' as macros %}
+	
+	<title>Hackathon Omgevingswet</title>
+	{{ macros.head() }}
+
+</head>
+<body>
+	<!-- Navbar -->
+	{{ macros.NavBar() }}
+
+	<div class="content-wrapper">
+		<div class='map-container'>
+			<div class="map-wrapper" id="backyard-plan">
+				<!-- <img src="../static/images/map.png"> -->
+			</div>
+			<!-- <div class="map-wrapper hidden" id='satelite'> -->
+				<!-- <img src="../static/images/satelite.png"> -->
+			<!-- </div>
+			<a id="satelite-swap"></a>
+ -->
+			<div id='possibilities-wrapper'>
+				<div class="header">Indieningsvereisten vergunning</div>
+				<div class='option collapsed'>
+					<span class='title'>Bijbehorend bouwwerk plaatsen</span>
+					<div class='restriction-container'>
+						<span class="restriction"><i>Voorwaarden</i></span>
+						<span class="restriction">Maximaal 20 m2</span>
+						<span class="restriction">Maximaal 2m hoog</span>
+						<span class="restriction">Materiaal: Hout</span>
+						<span class="restriction">Bouwtekening</span>
+						<span class="restriction">Archeologisch onderzoeksrapport</span>
+					</div>
+				</div>
+				<div class="header">Bijdragen aan de omgeving?</div>
+				<div class='checkbox'><input type="checkbox"'>Gezondheid</input></div>
+				<div class='checkbox'><input type="checkbox"'>Milieu</input></div>
+				<div class='checkbox'><input type="checkbox"'>Klimaat (CO2 reductie)</input></div>
+				<div class='checkbox'><input type="checkbox"'>Sociale cohesie</input></div>
+				<div class='checkbox'><input type="checkbox"'>Omgevingsveiligheid</input></div>
+				<div id='progress'>
+					<div id="bar"></div>
+					<div class="bartext">Beloning</div>
+				</div>
+				<a href="/request"><div id='submit-request'>Dien verzoek in</div></a>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

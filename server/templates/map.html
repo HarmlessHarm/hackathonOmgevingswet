@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- Import macros for flask -->
+	{% import 'macros.html' as macros %}
+	
+	<title>Hackathon Omgevingswet</title>
+	{{ macros.head() }}
+
+</head>
+<body>
+	<!-- Navbar -->
+	{{ macros.NavBar() }}
+
+	<div class="content-wrapper">
+		<div class='map-container'>
+			<div class="map-wrapper" id="map">
+				<!-- <img src="../static/images/map.png"> -->
+			</div>
+			<!-- <div class="map-wrapper hidden" id='satelite'> -->
+				<!-- <img src="../static/images/satelite.png"> -->
+			<!-- </div>
+			<a id="satelite-swap"></a>
+ -->
+			<div id='possibilities-wrapper'>
+				<div class="header">Wat mag en kan?</div>
+				<div class='option collapsed'>
+					<span class='title'>Dakkapel plaatsen</span>
+					<div class='restriction-container'>
+						<span class="restriction"><i>Voorwaarden</i></span>
+						<span class="restriction">Kleur: Wit</span>
+					</div>
+				</div>
+				<div class='option collapsed'>
+					<span class='title'>Bijbehorend bouwwerk plaatsen</span>
+					<div class='restriction-container'>
+						<span class="restriction"><i>Voorwaarden</i></span>
+						<span class="restriction">Maximaal 20 m2</span>
+						<span class="restriction">Maximaal 2m hoog</span>
+						<span class="restriction">Materiaal: Hout</span>
+					</div>
+				</div>
+				<div class='option collapsed'>
+					<span class='title'>Zonnepaneel of collector plaatsen</span>
+					<div class='restriction-container'>
+						<span class="restriction"><i>Voorwaarden</i></span>
+						<span class="restriction">Geen</span>
+					</div>
+				</div>
+				<div class='option collapsed'>
+					<span class='title'>Zonnewering of rolluik plaatsen</span>
+					<div class='restriction-container'>
+						<span class="restriction"><i>Voorwaarden</i></span>
+						<span class="restriction">Kleur: Zwart of grijstinten</span>
+						<span class="restriction">Materiaal: Acryldoek, Polyesterdoek</span>
+						<span class="restriction">of Glasvezeldoek</span>
+					</div>
+				</div>
+				<div class='option collapsed'>
+					<span class='title'>Boom kappen</span>
+					<div class='restriction-container'>
+						<span class="restriction"><i>Voorwaarden</i></span>
+						<span class="restriction">Geen</span>
+					</div>
+				</div>
+				<div class="divider"></div>
+				<div class="header">Bijdragen aan de omgeving?</div>
+				<div class='checkbox'><input type="checkbox"'>Gezondheid</input></div>
+				<div class='checkbox'><input type="checkbox"'>Milieu</input></div>
+				<div class='checkbox'><input type="checkbox"'>Klimaat (CO2 reductie)</input></div>
+				<div class='checkbox'><input type="checkbox"'>Sociale cohesie</input></div>
+				<div class='checkbox'><input type="checkbox"'>Omgevingsveiligheid</input></div>
+				<div id='progress'>
+					<div id="bar"></div>
+					<div class="bartext">Beloning</div>
+				</div>
+				<a href="/zoom"><div id='submit-request'>Dien verzoek in</div></a>
+				<div class="divider"></div>
+				<div class="header">Initiatief mag niet?</div>
+				<a href="/zoom"><div id='start-request'>Start vergunningaanvraag</div></a>
+			</div>
+		</div>
+	</div>
+</body>
+	<script>
+      function initMap() {
+        var uluru = {lat: 52.381190, lng: 4.835621};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 15,
+          center: uluru
+        });
+        var marker = new google.maps.Marker({
+          position: uluru,
+          map: map
+        });
+
+		var icon = 'https://maps.google.com/mapfiles/kml/shapes/info-i_maps.png';
+
+		contentString = "Deze buurtbewoner heeft recentelijk een schuur gebouwd"
+
+
+		var infowwindow = new google.maps.InfoWindow({
+			content: contentString
+		});
+		
+		var marker = new google.maps.Marker({
+			position: new google.maps.LatLng(52.381074, 4.835370),
+			icon: icon,
+			map: map
+		});
+
+		marker.addListener('click', function() {
+			infowwindow.open(map, marker);
+		})
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCEUgtAo0UZ3Q2e0iHwGJ4lo4Ca6SpWsdQ&callback=initMap">
+    </script>
+</html>
